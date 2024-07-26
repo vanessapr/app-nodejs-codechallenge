@@ -1,0 +1,47 @@
+POST http://localhost:3000/graphql
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+mutation($input: CreateTransactionInput!) {
+  createTransaction(input: $input) {
+    success message 
+    transaction {
+      transactionExternalId value createdAt
+      transactionStatus { name }
+      transactionType { name }
+    }
+  }
+}
+
+{
+  "input": {
+    "accountExternalIdDebit": "e9781a12-2043-4f75-8b4c-a93b04ee0711",
+    "accountExternalIdCredit": "214eb684-8269-4323-9f2d-c8850869e7dd",
+    "tranferTypeId": 1,
+    "value": 200
+  }
+}
+
+### 
+POST http://localhost:3000/graphql
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+query {
+  transactions(first: 50) {
+    transactionExternalId transactionType { name } transactionStatus { name }
+    value createdAt
+  }
+}
+
+###
+POST http://localhost:3000/graphql
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+query {
+  transaction(id: "6b41a118-26ad-4b8e-8b4e-e75cd14222c7") {
+    transactionExternalId transactionType { name } transactionStatus { name }
+    value createdAt
+  }
+}

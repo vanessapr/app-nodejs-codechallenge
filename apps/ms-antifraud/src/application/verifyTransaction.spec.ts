@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker';
 import { VerifyTransaction } from './verifyTransaction';
 
 describe('VerifyTransaction', () => {
-  test('Approve the transaction when the amount is less than 1000', () => {
+  test('Approve the transaction when the amount is less than or equal 1000', () => {
     const mockRequest = {
       id: faker.string.uuid(),
       value: 250,

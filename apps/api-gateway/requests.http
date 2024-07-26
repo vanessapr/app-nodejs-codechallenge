@@ -18,7 +18,7 @@ mutation($input: CreateTransactionInput!) {
     "accountExternalIdDebit": "e9781a12-2043-4f75-8b4c-a93b04ee0711",
     "accountExternalIdCredit": "214eb684-8269-4323-9f2d-c8850869e7dd",
     "tranferTypeId": 1,
-    "value": 200
+    "value": 1000
   }
 }
 

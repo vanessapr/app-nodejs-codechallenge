@@ -68,8 +68,13 @@ export class TransactionController {
   }
 
   @MessagePattern('transaction.get_by_id')
-  getTransactionById(@Payload('id') id: string) {
-    return this.transactionGetOneBydId.execute(id);
+  async getTransactionById(@Payload('id') id: string) {
+    try {
+      return await this.transactionGetOneBydId.execute(id);
+    } catch (err) {
+      this.logger.error(err.message, err);
+      return null;
+    }
   }
 
   @EventPattern('transaction.approved', Transport.KAFKA)
